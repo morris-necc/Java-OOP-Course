@@ -23,7 +23,6 @@ public class Genus {
     // in the zoo
 
     public int countSpecimens(Specimen[] animals, Species s){
-        // how many specimens of species s is in the damn zoo
         int count = 0;
         for(Specimen animal: animals){
             if(animal.getTOA() == s){
@@ -45,7 +44,7 @@ public class Genus {
 
     public LinkedList makeSpeciesList(LinkedList animals){
         LinkedList<Species> species = new LinkedList<Species>();
-        Iterator<Species> iterator = species.listIterator(0);
+        Iterator<Species> iter = species.listIterator(0);
         while(iter.hasNext()){
             species.add(iter.next().getTOA());
         }
@@ -54,10 +53,12 @@ public class Genus {
 
     public LinkedList makeSpeciesListUnique(LinkedList allSpecies){
         LinkedList<Species> species = new LinkedList<Species>();
-        Iterator<Species> iterator = species.listIterator(0);
+        Iterator<Species> iter = species.listIterator(0);
         while(iter.hasNext()){
-            species.add(iter.next().getTOA());
+            if(!species.contains(iter.next().getTOA())){
+                species.add(iter.next().getTOA());
+            }
         }
+        return species;
     }
-
 }
